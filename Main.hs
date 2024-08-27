@@ -3,8 +3,14 @@
 {-# LANGUAGE OverloadedRecordDot #-}
 
 module Main where
-import MyType (MyType(..))
-import AnotherType (AnotherType(..))
+
+data MyType = MyType
+    { foo :: Int
+    } deriving (Show)
+
+data AnotherType = AnotherType
+    { foo :: String
+    } deriving (Show)
 
 main :: IO ()
 main = do
