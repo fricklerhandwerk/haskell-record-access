@@ -14,3 +14,21 @@ main = do
     let myValue = MyType { foo = 42 }
     putStrLn $ "myValue = " ++ show (MyType.foo myValue)
 ```
+
+However, one can't have another type that also has a field `foo`.
+This can be alleviated with the `DuplicateRecordFields` language extension:
+
+```haskell
+{-# LANGUAGE DuplicateRecordFields #-}
+
+module Main where
+import MyType (MyType(..))
+import AnotherType (AnotherType(..))
+
+main :: IO ()
+main = do
+    let myValue = MyType { foo = 42 }
+    let anotherValue = AnotherType { foo = "bar" }
+    putStrLn $ "myValue = " ++ show (MyType.foo myValue)
+    putStrLn $ "anotherValue = " ++ show (AnotherType.foo anotherValue)
+```
