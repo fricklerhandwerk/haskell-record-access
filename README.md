@@ -69,8 +69,8 @@ main :: IO ()
 main = do
     let foo = MyType { foo = 42 }
     let bar = AnotherType { foo = "bar" }
-    putStrLn $ "foo = " ++ show (foo.foo)
-    putStrLn $ "bar = " ++ show (bar.foo)
+    putStrLn $ "foo = " ++ show foo.foo
+    putStrLn $ "bar = " ++ show bar.foo
 ```
 
 This means there's no need to artificially move around type definitions:
@@ -94,6 +94,6 @@ main :: IO ()
 main = do
     let foo = MyType { foo = 42 }
     let bar = AnotherType { foo = "bar" }
-    putStrLn $ "foo = " ++ show (foo.foo)
-    putStrLn $ "bar = " ++ show (bar.foo)
+    putStrLn $ "foo = " ++ show foo.foo
+    putStrLn $ "bar = " ++ show bar.foo
 ```
