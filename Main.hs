@@ -1,3 +1,4 @@
+{-# LANGUAGE NoFieldSelectors #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 
 module Main where
@@ -6,7 +7,7 @@ import AnotherType (AnotherType(..))
 
 main :: IO ()
 main = do
-    let myValue = MyType { foo = 42 }
-    let anotherValue = AnotherType { foo = "bar" }
-    putStrLn $ "myValue = " ++ show (MyType.foo myValue)
-    putStrLn $ "anotherValue = " ++ show (AnotherType.foo anotherValue)
+    let foo = MyType { foo = 42 }
+    let bar = AnotherType { foo = "bar" }
+    putStrLn $ "foo = " ++ show (MyType.foo foo)
+    putStrLn $ "bar = " ++ show (AnotherType.foo bar)
