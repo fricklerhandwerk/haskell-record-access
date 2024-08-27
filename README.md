@@ -51,3 +51,23 @@ main = do
     putStrLn $ "foo = " ++ show (MyType.foo foo)
     putStrLn $ "bar = " ++ show (AnotherType.foo bar)
 ```
+
+Finally, since we're delving into language extensions, why not just allow record access with a dot syntax directly with `OverloadedRecordDot`?
+
+```haskell
+{-# LANGUAGE NoFieldSelectors #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE OverloadedRecordDot #-}
+
+module Main where
+import MyType (MyType(..))
+import AnotherType (AnotherType(..))
+
+main :: IO ()
+main = do
+    let foo = MyType { foo = 42 }
+    let bar = AnotherType { foo = "bar" }
+    putStrLn $ "foo = " ++ show (foo.foo)
+    putStrLn $ "bar = " ++ show (bar.foo)
+```
+
