@@ -1,3 +1,5 @@
+# Man discovers Haskell language extensions
+
 I wondered if it's possible to access Haskell record fields with a dot notation.
 Turns out it is.
 
@@ -16,7 +18,7 @@ main = do
 ```
 
 However, one can't have another type that also has a field `foo`.
-This can be alleviated with the `DuplicateRecordFields` language extension:
+This can be alleviated with the [`DuplicateRecordFields`](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/duplicate_record_fields.html) language extension:
 
 ```haskell
 {-# LANGUAGE DuplicateRecordFields #-}
@@ -34,7 +36,7 @@ main = do
 ```
 
 One still can't use field names as variable names, although they're clearly distinct semantically.
-This can be helped with `NoFieldSelectors`:
+This can be helped with [`NoFieldSelectors`](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/field_selectors.html):
 
 ```haskell
 {-# LANGUAGE NoFieldSelectors #-}
@@ -52,7 +54,7 @@ main = do
     putStrLn $ "bar = " ++ show (AnotherType.foo bar)
 ```
 
-Finally, since we're delving into language extensions, why not just allow record access with a dot syntax directly with `OverloadedRecordDot`?
+Finally, since we're delving into language extensions, why not just allow record access with a dot syntax directly with [`OverloadedRecordDot`](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/overloaded_record_dot.html)?
 
 ```haskell
 {-# LANGUAGE NoFieldSelectors #-}
